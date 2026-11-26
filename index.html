@@ -1,0 +1,2752 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Taller de Comunicación Efectiva y Redacción de Memorándums – CFT</title>
+  <style>
+    /* ==========================================================================
+       VARIABLES Y ESTILOS BASE (Paleta Institucional CFT)
+       ========================================================================== */
+    :root {
+      --navy-900: #0c2340;
+      --navy-800: #13345c;
+      --navy-700: #1d4b82;
+      --teal-700: #0f766e;
+      --teal-600: #0d9488;
+      --teal-100: #ccfbf1;
+      --teal-50: #f0fdfa;
+
+      --slate-900: #0f172a;
+      --slate-800: #1e293b;
+      --slate-700: #334155;
+      --slate-600: #475569;
+      --slate-500: #64748b;
+      --slate-400: #94a3b8;
+      --slate-300: #cbd5e1;
+      --slate-200: #e2e8f0;
+      --slate-100: #f1f5f9;
+      --slate-50: #f8fafc;
+      --white: #ffffff;
+
+      /* Acentos de retroalimentación */
+      --green-700: #15803d;
+      --green-600: #16a34a;
+      --green-100: #dcfce7;
+      --green-50: #f0fdf4;
+
+      --amber-700: #b45309;
+      --amber-600: #d97706;
+      --amber-100: #fef3c7;
+      --amber-50: #fffbeb;
+
+      --red-700: #b91c1c;
+      --red-600: #dc2626;
+      --red-100: #fee2e2;
+      --red-50: #fef2f2;
+
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+      --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+      --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.08);
+      --shadow-lg: 0 12px 28px rgba(15, 23, 42, 0.16);
+      --transition: 0.2s ease;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--slate-100);
+      color: var(--slate-800);
+      line-height: 1.55;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ==========================================================================
+       HEADER INSTITUCIONAL
+       ========================================================================== */
+    .app-header {
+      background: linear-gradient(135deg, var(--navy-900) 0%, var(--navy-800) 60%, #104e66 100%);
+      color: var(--white);
+      padding: 1.25rem 1.5rem;
+      box-shadow: var(--shadow-md);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+    }
+
+    .header-inner {
+      max-width: 1320px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    .brand-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .header-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 1.25;
+    }
+
+    .header-subtitle {
+      font-size: 0.875rem;
+      color: #cbd5e1;
+      margin-top: 0.15rem;
+    }
+
+    .btn-guide {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: var(--teal-600);
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 0.625rem 1.1rem;
+      border-radius: var(--radius-md);
+      font-size: 0.925rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color var(--transition), transform var(--transition);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-guide:hover {
+      background-color: var(--teal-700);
+      transform: translateY(-1px);
+    }
+
+    .btn-guide:focus-visible {
+      outline: 3px solid var(--teal-100);
+      outline-offset: 2px;
+    }
+
+    /* ==========================================================================
+       CONTENEDOR PRINCIPAL Y SELECTOR DE CASOS
+       ========================================================================== */
+    .main-container {
+      max-width: 1320px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .section-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--slate-500);
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.85rem;
+    }
+
+    .case-tab {
+      background: var(--white);
+      border: 2px solid var(--slate-200);
+      border-radius: var(--radius-md);
+      padding: 0.9rem 1rem;
+      text-align: left;
+      cursor: pointer;
+      transition: all var(--transition);
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      position: relative;
+    }
+
+    .case-tab:hover {
+      border-color: var(--teal-600);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .case-tab.active {
+      border-color: var(--navy-800);
+      background: linear-gradient(180deg, var(--white) 0%, #f0f6fc 100%);
+      box-shadow: var(--shadow-md);
+    }
+
+    .case-tab.active::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--teal-600);
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
+    }
+
+    .case-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--teal-700);
+      background: var(--teal-50);
+      border: 1px solid var(--teal-100);
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      align-self: flex-start;
+    }
+
+    .case-tab.active .case-badge {
+      background: var(--navy-800);
+      color: var(--white);
+      border-color: var(--navy-800);
+    }
+
+    .case-title {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--navy-900);
+      margin-top: 0.2rem;
+    }
+
+    .case-desc {
+      font-size: 0.8rem;
+      color: var(--slate-600);
+      line-height: 1.35;
+    }
+
+    /* ==========================================================================
+       TARJETA DE CONTEXTO Y BORRADOR ORIGINAL
+       ========================================================================== */
+    .case-brief-card {
+      background: var(--white);
+      border: 1px solid var(--slate-200);
+      border-left: 5px solid var(--navy-800);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.4rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .brief-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr;
+      gap: 1.25rem;
+      align-items: start;
+    }
+
+    .brief-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .brief-item-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--navy-700);
+      margin-bottom: 0.2rem;
+    }
+
+    .brief-item-text {
+      font-size: 0.92rem;
+      color: var(--slate-700);
+    }
+
+    .original-draft-box {
+      background: var(--amber-50);
+      border: 1px dashed #f59e0b;
+      border-radius: var(--radius-md);
+      padding: 1rem 1.15rem;
+    }
+
+    .original-draft-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .original-draft-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--amber-700);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .original-draft-text {
+      font-size: 0.92rem;
+      color: var(--slate-800);
+      font-style: italic;
+      line-height: 1.6;
+    }
+
+    .free-case-box {
+      background: var(--teal-50);
+      border: 1px solid var(--teal-100);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.2rem;
+      color: var(--slate-700);
+      font-size: 0.93rem;
+    }
+
+    .free-case-box strong {
+      color: var(--navy-900);
+    }
+
+    /* ==========================================================================
+       WORKSPACE DE DOS COLUMNAS
+       ========================================================================== */
+    .workspace-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 1.35rem;
+      align-items: start;
+    }
+
+    .panel-card {
+      background: var(--white);
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-lg);
+      padding: 1.4rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding-bottom: 0.9rem;
+      margin-bottom: 1.1rem;
+      border-bottom: 1px solid var(--slate-200);
+    }
+
+    .panel-title {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: var(--navy-900);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Campos del Memorándum */
+    .memo-fields-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.85rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.32rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .memo-fields-grid .form-group {
+      margin-bottom: 0;
+    }
+
+    .form-label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--slate-700);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .label-hint {
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: var(--slate-500);
+    }
+
+    .form-input,
+    .form-textarea {
+      width: 100%;
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: var(--slate-900);
+      background: var(--slate-50);
+      border: 1.5px solid var(--slate-300);
+      border-radius: var(--radius-sm);
+      padding: 0.65rem 0.85rem;
+      transition: border-color var(--transition), background-color var(--transition), box-shadow var(--transition);
+    }
+
+    .form-input:focus,
+    .form-textarea:focus {
+      outline: none;
+      background: var(--white);
+      border-color: var(--teal-600);
+      box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.15);
+    }
+
+    .form-textarea {
+      min-height: 230px;
+      resize: vertical;
+      line-height: 1.65;
+      font-size: 1rem;
+    }
+
+    /* Botones de Acción */
+    .action-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    .action-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 0.62rem 1.05rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+
+    .btn:focus-visible {
+      outline: 3px solid rgba(13, 148, 136, 0.35);
+      outline-offset: 1px;
+    }
+
+    .btn-primary {
+      background: var(--navy-800);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background: var(--navy-900);
+    }
+
+    .btn-teal {
+      background: var(--teal-700);
+      color: var(--white);
+    }
+
+    .btn-teal:hover {
+      background: var(--teal-600);
+    }
+
+    .btn-secondary {
+      background: var(--white);
+      color: var(--slate-700);
+      border-color: var(--slate-300);
+    }
+
+    .btn-secondary:hover {
+      background: var(--slate-100);
+      border-color: var(--slate-400);
+    }
+
+    .btn-danger-ghost {
+      background: transparent;
+      color: var(--red-700);
+      border-color: var(--red-100);
+    }
+
+    .btn-danger-ghost:hover {
+      background: var(--red-50);
+      border-color: var(--red-600);
+    }
+
+    /* ==========================================================================
+       PANEL DERECHO: MEDIDOR, MÉTRICAS Y AUTOEVALUACIÓN
+       ========================================================================== */
+    .score-card {
+      background: var(--slate-50);
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.15rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .score-top {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 0.55rem;
+    }
+
+    .score-value-wrap {
+      display: flex;
+      align-items: baseline;
+      gap: 0.35rem;
+    }
+
+    .score-number {
+      font-size: 2rem;
+      font-weight: 800;
+      line-height: 1;
+      color: var(--navy-900);
+    }
+
+    .score-max {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--slate-500);
+    }
+
+    .score-badge {
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .badge-neutral {
+      background: var(--slate-200);
+      color: var(--slate-700);
+    }
+
+    .badge-red {
+      background: var(--red-100);
+      color: var(--red-700);
+    }
+
+    .badge-amber {
+      background: var(--amber-100);
+      color: var(--amber-700);
+    }
+
+    .badge-teal {
+      background: var(--teal-100);
+      color: var(--teal-700);
+    }
+
+    .badge-green {
+      background: var(--green-100);
+      color: var(--green-700);
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 10px;
+      background: var(--slate-200);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      border-radius: 999px;
+      transition: width 0.35s ease, background-color 0.35s ease;
+      background: var(--slate-400);
+    }
+
+    /* Grid de métricas numéricas */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.65rem;
+      margin-bottom: 1rem;
+    }
+
+    .metric-box {
+      background: var(--white);
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-md);
+      padding: 0.75rem 0.7rem;
+      text-align: center;
+    }
+
+    .metric-val {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--navy-900);
+      line-height: 1.2;
+    }
+
+    .metric-lbl {
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: var(--slate-500);
+      margin-top: 0.15rem;
+    }
+
+    .metric-status {
+      font-size: 0.72rem;
+      font-weight: 600;
+      margin-top: 0.3rem;
+      display: inline-block;
+      padding: 0.1rem 0.45rem;
+      border-radius: 999px;
+    }
+
+    /* Bloques de análisis */
+    .analysis-block {
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-md);
+      padding: 0.9rem 1rem;
+      margin-bottom: 0.9rem;
+      background: var(--white);
+    }
+
+    .analysis-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--navy-900);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .alert-banner {
+      font-size: 0.82rem;
+      padding: 0.6rem 0.75rem;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      margin-bottom: 0.85rem;
+      line-height: 1.4;
+    }
+
+    .alert-amber {
+      background: var(--amber-50);
+      border: 1px solid #fcd34d;
+      color: var(--amber-700);
+    }
+
+    .alert-green {
+      background: var(--green-50);
+      border: 1px solid #86efac;
+      color: var(--green-700);
+    }
+
+    /* Chips de vicios burocráticos */
+    .cliche-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .cliche-item {
+      background: var(--red-50);
+      border: 1px solid #fecaca;
+      border-radius: var(--radius-sm);
+      padding: 0.5rem 0.7rem;
+      font-size: 0.82rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .cliche-found {
+      font-weight: 700;
+      color: var(--red-700);
+    }
+
+    .cliche-suggestion {
+      color: var(--slate-700);
+    }
+
+    .cliche-suggestion strong {
+      color: var(--green-700);
+    }
+
+    .empty-feedback {
+      font-size: 0.83rem;
+      color: var(--slate-500);
+    }
+
+    /* Indicadores de claridad de acción/datos */
+    .clarity-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .clarity-pill {
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.3rem 0.65rem;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      border: 1px solid var(--slate-200);
+      background: var(--slate-50);
+      color: var(--slate-500);
+    }
+
+    .clarity-pill.detected {
+      background: var(--green-50);
+      border-color: #86efac;
+      color: var(--green-700);
+    }
+
+    /* Lista de Autoevaluación */
+    .checklist {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .checklist-item label {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      padding: 0.55rem 0.7rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--slate-200);
+      background: var(--slate-50);
+      cursor: pointer;
+      font-size: 0.86rem;
+      color: var(--slate-700);
+      transition: all var(--transition);
+    }
+
+    .checklist-item label:hover {
+      border-color: var(--teal-600);
+      background: var(--white);
+    }
+
+    .checklist-item input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      margin-top: 0.1rem;
+      accent-color: var(--teal-700);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .checklist-item input[type="checkbox"]:checked+span {
+      color: var(--navy-900);
+      font-weight: 600;
+    }
+
+    /* ==========================================================================
+       MODALES (Guía Rápida y Vista Previa / Comparar)
+       ========================================================================== */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(12, 35, 64, 0.65);
+      backdrop-filter: blur(2px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+      z-index: 100;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-dialog {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      max-width: 860px;
+      width: 100%;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+      animation: modalFadeIn 0.2s ease-out;
+    }
+
+    @keyframes modalFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.98);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .modal-header {
+      background: var(--navy-900);
+      color: var(--white);
+      padding: 1.1rem 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .modal-title {
+      font-size: 1.12rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .modal-close {
+      background: rgba(255, 255, 255, 0.15);
+      border: none;
+      color: var(--white);
+      width: 34px;
+      height: 34px;
+      border-radius: var(--radius-sm);
+      font-size: 1.25rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background var(--transition);
+    }
+
+    .modal-close:hover {
+      background: rgba(255, 255, 255, 0.28);
+    }
+
+    .modal-body {
+      padding: 1.4rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .modal-footer {
+      padding: 1rem 1.4rem;
+      border-top: 1px solid var(--slate-200);
+      background: var(--slate-50);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 0.65rem;
+    }
+
+    /* Contenido de Guía Rápida */
+    .guide-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.85rem;
+    }
+
+    .guide-pillar {
+      background: var(--slate-50);
+      border: 1px solid var(--slate-200);
+      border-top: 4px solid var(--teal-600);
+      border-radius: var(--radius-md);
+      padding: 0.95rem;
+    }
+
+    .guide-pillar h4 {
+      color: var(--navy-900);
+      font-size: 0.98rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .guide-pillar p {
+      font-size: 0.85rem;
+      color: var(--slate-600);
+    }
+
+    .pyramid-box {
+      background: #f0f6fc;
+      border: 1px solid #bfdbfe;
+      border-radius: var(--radius-md);
+      padding: 1rem 1.15rem;
+    }
+
+    .pyramid-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin-top: 0.7rem;
+    }
+
+    .pyramid-step {
+      background: var(--white);
+      border-radius: var(--radius-sm);
+      padding: 0.7rem 0.85rem;
+      border-left: 4px solid var(--navy-800);
+      font-size: 0.84rem;
+    }
+
+    .guide-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.86rem;
+    }
+
+    .guide-table th,
+    .guide-table td {
+      border: 1px solid var(--slate-200);
+      padding: 0.6rem 0.8rem;
+      text-align: left;
+    }
+
+    .guide-table th {
+      background: var(--navy-800);
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    .guide-table tr:nth-child(even) td {
+      background: var(--slate-50);
+    }
+
+    .text-avoid {
+      color: var(--red-700);
+      font-weight: 600;
+    }
+
+    .text-prefer {
+      color: var(--green-700);
+      font-weight: 600;
+    }
+
+    /* Vista Previa Formal del Memorándum */
+    .memo-document {
+      background: var(--white);
+      border: 1px solid var(--slate-300);
+      border-radius: var(--radius-sm);
+      padding: 1.75rem 2rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .memo-doc-header {
+      border-bottom: 2px solid var(--navy-900);
+      padding-bottom: 0.85rem;
+      margin-bottom: 1.1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 1rem;
+    }
+
+    .memo-doc-org {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--teal-700);
+    }
+
+    .memo-doc-title {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--navy-900);
+      letter-spacing: 0.04em;
+    }
+
+    .memo-doc-date {
+      font-size: 0.85rem;
+      color: var(--slate-600);
+    }
+
+    .memo-meta-table {
+      width: 100%;
+      margin-bottom: 1.2rem;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+    }
+
+    .memo-meta-table td {
+      padding: 0.3rem 0;
+      vertical-align: top;
+    }
+
+    .memo-meta-key {
+      width: 95px;
+      font-weight: 700;
+      color: var(--navy-900);
+      text-transform: uppercase;
+      font-size: 0.82rem;
+    }
+
+    .memo-doc-body {
+      border-top: 1px solid var(--slate-200);
+      padding-top: 1.1rem;
+      font-size: 1rem;
+      color: var(--slate-900);
+      line-height: 1.7;
+      white-space: pre-wrap;
+    }
+
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .compare-card {
+      border-radius: var(--radius-md);
+      padding: 1rem 1.15rem;
+      border: 1px solid var(--slate-200);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .compare-before {
+      background: var(--amber-50);
+      border-color: #fcd34d;
+    }
+
+    .compare-after {
+      background: var(--green-50);
+      border-color: #86efac;
+    }
+
+    .compare-heading {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.45rem;
+    }
+
+    /* ==========================================================================
+       TOAST DE NOTIFICACIÓN (Sin alert/confirm)
+       ========================================================================== */
+    .toast-container {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 200;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .toast {
+      background: var(--navy-900);
+      color: var(--white);
+      padding: 0.8rem 1.1rem;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-lg);
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      animation: toastSlide 0.25s ease-out;
+    }
+
+    .toast-undo {
+      background: rgba(255, 255, 255, 0.18);
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      padding: 0.25rem 0.6rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .toast-undo:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    @keyframes toastSlide {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .app-footer {
+      text-align: center;
+      padding: 1rem 1.5rem;
+      font-size: 0.8rem;
+      color: var(--slate-500);
+      border-top: 1px solid var(--slate-200);
+      background: var(--white);
+      margin-top: 1rem;
+    }
+
+    /* ==========================================================================
+       RESPONSIVIDAD
+       ========================================================================== */
+    @media (max-width: 1024px) {
+      .cases-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .workspace-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .brief-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .main-container {
+        padding: 1rem;
+      }
+
+      .cases-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .memo-fields-grid,
+      .guide-grid-3,
+      .pyramid-steps,
+      .compare-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .header-title {
+        font-size: 1.1rem;
+      }
+
+      .btn-guide {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .action-bar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .action-group {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+
+    /* ==========================================================================
+       ESTILOS DE IMPRESIÓN / GUARDAR PDF
+       ========================================================================== */
+    #printArea {
+      display: none;
+    }
+
+    @media print {
+      body>*:not(#printArea) {
+        display: none !important;
+      }
+
+      #printArea {
+        display: block !important;
+        padding: 1.5cm;
+        background: #ffffff;
+        color: #000000;
+      }
+
+      .memo-document {
+        border: none;
+        box-shadow: none;
+        padding: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ========================================================================
+       ENCABEZADO PRINCIPAL
+       ======================================================================== -->
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="brand-group">
+        <div class="brand-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+          </svg>
+        </div>
+        <div>
+          <h1 class="header-title">Taller de Comunicación Efectiva y Redacción de Memorándums</h1>
+          <p class="header-subtitle">Actividad Práctica para Funcionarios CFT</p>
+        </div>
+      </div>
+
+      <button type="button" class="btn-guide" id="btnOpenGuide">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+        </svg>
+        Guía Rápida de Redacción
+      </button>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       CONTENIDO PRINCIPAL
+       ======================================================================== -->
+  <main class="main-container">
+
+    <!-- 1. SELECTOR DE CASOS PRÁCTICOS -->
+    <section aria-label="Selector de casos prácticos">
+      <div class="section-label">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+          aria-hidden="true">
+          <rect x="3" y="3" width="7" height="7"></rect>
+          <rect x="14" y="3" width="7" height="7"></rect>
+          <rect x="14" y="14" width="7" height="7"></rect>
+          <rect x="3" y="14" width="7" height="7"></rect>
+        </svg>
+        1. Selecciona un caso práctico para trabajar
+      </div>
+
+      <div class="cases-grid" id="casesGrid" role="tablist">
+        <!-- Generado dinámicamente por JS -->
+      </div>
+    </section>
+
+    <!-- TARJETA DE CONTEXTO Y BORRADOR ORIGINAL -->
+    <section class="case-brief-card" id="caseBriefCard" aria-live="polite">
+      <!-- Generado dinámicamente por JS según el caso activo -->
+    </section>
+
+    <!-- 2 y 3. ÁREA DE TRABAJO EN DOS COLUMNAS -->
+    <section class="workspace-grid">
+
+      <!-- COLUMNA IZQUIERDA: ZONA DE REDACCIÓN -->
+      <div class="panel-card">
+        <div class="panel-header">
+          <h2 class="panel-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0f766e" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 20h9"></path>
+              <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+            </svg>
+            Zona de Redacción del Memorándum
+          </h2>
+          <span class="case-badge" id="activeCaseIndicator">Caso 1</span>
+        </div>
+
+        <!-- Encabezado opcional del memorándum -->
+        <div class="memo-fields-grid">
+          <div class="form-group">
+            <label for="inputDe" class="form-label">
+              De (Unidad / Cargo)
+              <span class="label-hint">Opcional</span>
+            </label>
+            <input type="text" id="inputDe" class="form-input"
+              placeholder="Ej.: Dirección de Administración y Finanzas">
+          </div>
+
+          <div class="form-group">
+            <label for="inputPara" class="form-label">
+              Para (Destinatario)
+              <span class="label-hint">Opcional</span>
+            </label>
+            <input type="text" id="inputPara" class="form-input"
+              placeholder="Ej.: Rector(a) (c.c. Secretaría de Rectoría)">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputAsunto" class="form-label">
+            Asunto del Memorándum
+            <span class="label-hint">Debe ser breve y específico</span>
+          </label>
+          <input type="text" id="inputAsunto" class="form-input"
+            placeholder="Ej.: Solicitud de autorización de pago Factura N° 1482">
+        </div>
+
+        <!-- Textarea principal -->
+        <div class="form-group">
+          <label for="memoTextarea" class="form-label">
+            Redacta tu párrafo mejorado aquí
+            <span class="label-hint">Objetivo: 1 párrafo claro (40 a 110 palabras)</span>
+          </label>
+          <textarea id="memoTextarea" class="form-textarea"
+            placeholder="Escribe aquí tu memorándum en un solo párrafo claro, directo y respetuoso. Comienza con la idea principal en la primera oración..."></textarea>
+        </div>
+
+        <!-- Botones de acción -->
+        <div class="action-bar">
+          <button type="button" class="btn btn-danger-ghost" id="btnClear">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              aria-hidden="true">
+              <polyline points="3 6 5 6 21 6"></polyline>
+              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+            </svg>
+            Limpiar
+          </button>
+
+          <div class="action-group">
+            <button type="button" class="btn btn-secondary" id="btnCopy">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                aria-hidden="true">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              Copiar memorándum
+            </button>
+
+            <button type="button" class="btn btn-primary" id="btnPreview">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                aria-hidden="true">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+              Vista Previa / Comparar
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- COLUMNA DERECHA: PANEL DE ANÁLISIS Y AUTOEVALUACIÓN -->
+      <div class="panel-card">
+        <div class="panel-header">
+          <h2 class="panel-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0f766e" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+            Análisis en Tiempo Real
+          </h2>
+        </div>
+
+        <!-- Medidor de Efectividad -->
+        <div class="score-card">
+          <div class="score-top">
+            <div>
+              <div
+                style="font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--slate-500);">
+                Medidor de Efectividad
+              </div>
+              <div class="score-value-wrap">
+                <span class="score-number" id="scoreNumber">0</span>
+                <span class="score-max">/ 100</span>
+              </div>
+            </div>
+            <span class="score-badge badge-neutral" id="scoreLabel">Sin texto</span>
+          </div>
+          <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"
+            id="scoreProgressBar">
+            <div class="progress-fill" id="scoreFill"></div>
+          </div>
+        </div>
+
+        <!-- Métricas numéricas -->
+        <div class="metrics-grid">
+          <div class="metric-box">
+            <div class="metric-val" id="metricWords">0</div>
+            <div class="metric-lbl">Palabras</div>
+            <span class="metric-status badge-neutral" id="metricWordsStatus">Ideal: 40–110</span>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val" id="metricSentences">0</div>
+            <div class="metric-lbl">Oraciones</div>
+            <span class="metric-status badge-neutral" id="metricSentencesStatus">2 a 5 ideal</span>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val" id="metricAvgWords">0</div>
+            <div class="metric-lbl">Pal./oración</div>
+            <span class="metric-status badge-neutral" id="metricAvgStatus">Máx. 28</span>
+          </div>
+        </div>
+
+        <!-- Alerta de oración larga -->
+        <div id="longSentenceAlert" class="alert-banner alert-amber" style="display: none;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            style="flex-shrink: 0; margin-top: 1px;" aria-hidden="true">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+            <line x1="12" y1="9" x2="12" y2="13"></line>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          </svg>
+          <span id="longSentenceText"></span>
+        </div>
+
+        <!-- Detector de vicios burocráticos -->
+        <div class="analysis-block">
+          <div class="analysis-title">
+            <span>Detector de vicios burocráticos</span>
+            <span class="score-badge badge-neutral" id="clicheCountBadge">0 detectados</span>
+          </div>
+          <div id="clicheResults" class="cliche-list">
+            <p class="empty-feedback">Comienza a escribir para verificar si existen muletillas o frases burocráticas
+              innecesarias.</p>
+          </div>
+        </div>
+
+        <!-- Verificador de claridad de acción y datos -->
+        <div class="analysis-block">
+          <div class="analysis-title">
+            <span>Claridad de acción y datos concretos</span>
+          </div>
+          <div class="clarity-pills" id="clarityPills">
+            <span class="clarity-pill" id="pillDate">○ Fechas / Días / Plazos</span>
+            <span class="clarity-pill" id="pillTime">○ Horarios</span>
+            <span class="clarity-pill" id="pillChannel">○ Canal / Contacto</span>
+            <span class="clarity-pill" id="pillAction">○ Verbo de acción claro</span>
+          </div>
+        </div>
+
+        <!-- Lista de Autoevaluación -->
+        <div class="analysis-block" style="margin-bottom: 0;">
+          <div class="analysis-title">
+            <span>Lista de Autoevaluación</span>
+            <span class="label-hint" id="checklistCounter">0 de 5</span>
+          </div>
+          <ul class="checklist" id="selfEvalList">
+            <li class="checklist-item">
+              <label>
+                <input type="checkbox" data-check="0">
+                <span>1. La idea principal está en la primera oración.</span>
+              </label>
+            </li>
+            <li class="checklist-item">
+              <label>
+                <input type="checkbox" data-check="1">
+                <span>2. Se entiende claramente qué acción se espera del destinatario.</span>
+              </label>
+            </li>
+            <li class="checklist-item">
+              <label>
+                <input type="checkbox" data-check="2">
+                <span>3. Incluye datos concretos (fechas, horarios, plazos o responsables).</span>
+              </label>
+            </li>
+            <li class="checklist-item">
+              <label>
+                <input type="checkbox" data-check="3">
+                <span>4. El tono es respetuoso, directo y profesional (sin pasivo-agresividad).</span>
+              </label>
+            </li>
+            <li class="checklist-item">
+              <label>
+                <input type="checkbox" data-check="4">
+                <span>5. Eliminé rodeos y frases burocráticas innecesarias.</span>
+              </label>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    Taller de Comunicación Efectiva y Redacción de Memorándums · Material de práctica interna para funcionarios CFT ·
+    Funciona 100% sin conexión a internet.
+  </footer>
+
+  <!-- ========================================================================
+       MODAL 1: GUÍA RÁPIDA DE REDACCIÓN
+       ======================================================================== -->
+  <div class="modal-backdrop" id="guideModal" role="dialog" aria-modal="true" aria-labelledby="guideModalTitle">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title" id="guideModalTitle">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            aria-hidden="true">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+          </svg>
+          Guía Rápida de Redacción de Memorándums
+        </h3>
+        <button type="button" class="modal-close" data-close-modal="guideModal"
+          aria-label="Cerrar guía">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Regla de las 3C -->
+        <div>
+          <div class="section-label">Regla de las 3C</div>
+          <div class="guide-grid-3">
+            <div class="guide-pillar">
+              <h4>1. Claro</h4>
+              <p>Usa un lenguaje sencillo y preciso. Evita ambigüedades: indica qué ocurre, cuándo, dónde y qué debe
+                hacer quien lee.</p>
+            </div>
+            <div class="guide-pillar">
+              <h4>2. Conciso</h4>
+              <p>Ve directo al punto. Prefiere oraciones cortas (menos de 25–28 palabras) y elimina rodeos que no
+                aportan información.</p>
+            </div>
+            <div class="guide-pillar">
+              <h4>3. Cortés</h4>
+              <p>Mantén un tono institucional, respetuoso y colaborativo. Evita reproches implícitos o frases
+                pasivo-agresivas.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pirámide Invertida -->
+        <div class="pyramid-box">
+          <div class="section-label" style="color: var(--navy-800); margin-bottom: 0.25rem;">Estructura: Pirámide
+            Invertida</div>
+          <p style="font-size: 0.87rem; color: var(--slate-700);">Entrega lo más importante al principio para que el
+            funcionario comprenda el mensaje en los primeros 5 segundos de lectura.</p>
+          <div class="pyramid-steps">
+            <div class="pyramid-step">
+              <strong>1° Oración: Idea Principal</strong><br>
+              El aviso, decisión o solicitud central.
+            </div>
+            <div class="pyramid-step">
+              <strong>2° Oración: Datos Clave</strong><br>
+              Fechas, horarios, salas, canales o responsables.
+            </div>
+            <div class="pyramid-step">
+              <strong>3° Oración: Acción / Cierre</strong><br>
+              Qué debe hacer el destinatario y a quién contactar si tiene dudas.
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabla Vicios vs Alternativas -->
+        <div>
+          <div class="section-label">Evitar vicios burocráticos vs. Alternativa directa</div>
+          <table class="guide-table">
+            <thead>
+              <tr>
+                <th>Evitar (vicio o rodeo burocrático)</th>
+                <th>Alternativa directa y profesional</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="text-avoid">Junto con saludar, por medio de la presente informo...</td>
+                <td class="text-prefer">Informo que... / Les comunicamos que...</td>
+              </tr>
+              <tr>
+                <td class="text-avoid">Me dirijo a usted con el fin de solicitar...</td>
+                <td class="text-prefer">Solicito... / Agradeceremos enviar...</td>
+              </tr>
+              <tr>
+                <td class="text-avoid">A la brevedad posible</td>
+                <td class="text-prefer">Antes del viernes 15 a las 17:00 hrs. (indicar plazo exacto)</td>
+              </tr>
+              <tr>
+                <td class="text-avoid">Cabe señalar que / Hago presente que</td>
+                <td class="text-prefer">Eliminar el relleno e ir directo al dato concreto.</td>
+              </tr>
+              <tr>
+                <td class="text-avoid">Se solicita encarecidamente</td>
+                <td class="text-prefer">Agradeceremos... / Solicitamos...</td>
+              </tr>
+              <tr>
+                <td class="text-avoid">En relación a / De acuerdo a lo anterior</td>
+                <td class="text-prefer">Respecto de... / Por lo anterior...</td>
+              </tr>
+              <tr>
+                <td class="text-avoid">Sin otro particular, esperando una buena acogida</td>
+                <td class="text-prefer">Quedo atento a sus consultas. / Saludos cordiales.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-close-modal="guideModal">Entendido, volver a
+          redactar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MODAL 2: VISTA PREVIA FORMAL Y COMPARACIÓN
+       ======================================================================== -->
+  <div class="modal-backdrop" id="previewModal" role="dialog" aria-modal="true" aria-labelledby="previewModalTitle">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title" id="previewModalTitle">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            aria-hidden="true">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+          </svg>
+          Vista Previa del Memorándum
+        </h3>
+        <button type="button" class="modal-close" data-close-modal="previewModal"
+          aria-label="Cerrar vista previa">&times;</button>
+      </div>
+
+      <div class="modal-body" id="previewModalBody">
+        <!-- Generado dinámicamente por JS -->
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-close-modal="previewModal">Cerrar</button>
+        <button type="button" class="btn btn-secondary" id="btnPrintMemo">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            aria-hidden="true">
+            <polyline points="6 9 6 2 18 2 18 9"></polyline>
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+            <rect x="6" y="14" width="12" height="8"></rect>
+          </svg>
+          Imprimir
+        </button>
+        <button type="button" class="btn btn-teal" id="btnDownloadPdf">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          Guardar PDF
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenedor oculto exclusivo para impresión limpia -->
+  <div id="printArea" aria-hidden="true"></div>
+
+  <!-- Contenedor de notificaciones Toast -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- ========================================================================
+       LÓGICA JAVASCRIPT PURA (100% Autocontenida)
+       ======================================================================== -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* ----------------------------------------------------------------------
+         1. DEFINICIÓN DE CASOS PRÁCTICOS (Contexto CFT Chile)
+         ---------------------------------------------------------------------- */
+      const CASES = [
+        {
+          id: 'caso1',
+          badge: 'Caso 1',
+          title: 'Autorización de Pago',
+          shortDesc: 'Solicitud de autorización de pago de cuotas a la comisión INGRESA.',
+          context: 'La Dirección Económica y Administrativa debe solicitar formalmente a Rectoría, con copia a Secretaría de Rectoría, la autorización de pago correspondiente a la Tercera Cuota anual comprometida con la Comisión Administradora del Sistema de Créditos para Estudios Superiores (Comisión INGRESA), por un monto total de $2.450.000. Esta obligación financiera deriva del convenio vigente de participación institucional en el Crédito con Garantía Estatal (CAE), el cual permite garantizar la continuidad del financiamiento estudiantil para los alumnos beneficiarios de las distintas sedes durante el presente año académico. Para respaldar el acto administrativo debe adjuntar la documentación de respaldo.',
+          objective: 'Solicitar formalmente la autorización de pago indicando con precisión el monto y adjuntar antecedentes pertinentes.',
+
+          defaultDe: 'Dirección de Administración y Finanzas',
+          defaultPara: 'Rector(a) (c.c. Secretaría de Rectoría)',
+          defaultAsunto: 'Pago pendiente de proveedor'
+        },
+        {
+          id: 'caso2',
+          badge: 'Caso 2',
+          title: 'Modificación de Bases de Licitación',
+          shortDesc: 'Solicitud de resolución para modificar bases de licitación pública antes del cierre.',
+          context: 'La Unidad de Adquisiciones detectó un error en las especificaciones técnicas y el cronograma de la Licitación Pública ID 8452-18-LE26 ("Adquisición de equipamiento para talleres de electricidad"), publicada en el portal Mercado Público. Es necesario ampliar el plazo de cierre de ofertas hasta el jueves 10 de diciembre a las 15:00 hrs. y corregir el Anexo Técnico N° 2, antes de que venza el período de respuestas el martes 1 de diciembre a las 12:00 hrs. Para dictar la resolución exenta modificatoria, el requerimiento debe dirigirse al Rector (con copia a Secretaría de Rectoría) adjuntando el informe técnico fundado, el borrador de modificación en PDF y el visto bueno previo de la Dirección de Administración y Finanzas.',
+          objective: 'Solicitar al Rector la dictación de la resolución que modifica las bases de licitación, precisando el ID de licitación, el fundamento técnico, las nuevas fechas y horarios, los antecedentes revisados adjuntos y el plazo para publicar en Mercado Público.',
+          defaultDe: 'Unidad de Adquisiciones',
+          defaultPara: 'Rector(a) (c.c. Secretaría de Rectoría)',
+          defaultAsunto: 'Cambio en bases de licitación'
+        },
+        {
+          id: 'caso3',
+          badge: 'Caso 3',
+          title: 'Contratación de Personal',
+          shortDesc: 'Solicitud de contratación a honorarios por reemplazo de licencia médica docente.',
+          context: 'La Dirección Académica necesita tramitar la contratación a honorarios de María José Paredes Muñoz (RUT 16.482.310-5) como docente de la carrera de Técnico en Enfermería, para cubrir el reemplazo del docente titular Carlos Riquelme, quien presenta licencia médica por 30 días. El contrato regirá entre el 1 y el 30 de diciembre de 2026 (22 horas semanales) y se requiere dictar la resolución antes del viernes 27 de noviembre a las 16:00 hrs. Se deben adjuntar en PDF el currículum y título profesional, los términos de referencia, el certificado de disponibilidad presupuestaria y el informe de necesidad firmado, con copia a Gestión de Personas (personas@cft.cl).',
+          objective: 'Solicitar la tramitación de la contratación a honorarios respondiendo las 5 preguntas clave (qué se solicita, fundamento del reemplazo, persona y vigencia exacta, antecedentes de respaldo adjuntos y canal de coordinación), con lenguaje formal, claro y sin muletillas.',
+          defaultDe: 'Dirección Académica',
+          defaultPara: 'Rector(a) (c.c. Secretaría de Rectoría y Gestión de Personas)',
+          defaultAsunto: 'Reemplazo urgente de docente'
+        },
+        {
+          id: 'caso4',
+          badge: 'Caso 4',
+          title: 'Caso Libre (Tu Unidad)',
+          shortDesc: 'Redacta un memorándum basado en una situación real de tu área.',
+          context: 'Elige una comunicación real que debas enviar habitualmente desde tu unidad o departamento en el CFT (por ejemplo: cambio de horario de atención, citación a reunión, solicitud de documentos, difusión de un protocolo o recordatorio de plazo).',
+          objective: 'Redactar un único párrafo efectivo aplicando la regla de las 3C (Claro, Conciso y Cortés) y la pirámide invertida, incluyendo datos concretos y una acción clara.',
+          originalDraft: null,
+          defaultDe: '',
+          defaultPara: '',
+          defaultAsunto: ''
+        }
+      ];
+
+      /* ----------------------------------------------------------------------
+         2. DICCIONARIO DE VICIOS BUROCRÁTICOS Y MULETILLAS (CHILE)
+         ---------------------------------------------------------------------- */
+      const BUREAUCRATIC_CLICHES = [
+        {
+          pattern: /junto con saludar(le|les|los|las)?/i,
+          label: 'Junto con saludar',
+          suggestion: 'Inicia directo con el mensaje o usa un saludo breve aparte (ej.: "Estimados/as:").'
+        },
+        {
+          pattern: /(por medio de|mediante) la presente/i,
+          label: 'Por medio de la presente',
+          suggestion: 'Elimínalo; el destinatario ya está leyendo el memorándum. Ve directo al verbo (ej.: "Informamos que...").'
+        },
+        {
+          pattern: /sin otro particular/i,
+          label: 'Sin otro particular',
+          suggestion: 'Reemplázalo por un cierre útil y humano (ej.: "Quedo atento a sus consultas" o "Saludos cordiales").'
+        },
+        {
+          pattern: /a la (mayor )?brevedad( posible)?/i,
+          label: 'A la brevedad posible',
+          suggestion: 'Es ambiguo. Indica una fecha y hora exacta (ej.: "antes del jueves 15 a las 16:00 hrs.").'
+        },
+        {
+          pattern: /cabe (se[nñ]alar|destacar|mencionar) que/i,
+          label: 'Cabe señalar que',
+          suggestion: 'Frase de relleno. Elimínala y escribe directamente la información importante.'
+        },
+        {
+          pattern: /(de acuerdo a|conforme a) lo anterior/i,
+          label: 'De acuerdo a lo anterior',
+          suggestion: 'Simplifica con "Por ello," o conecta directamente con la acción esperada.'
+        },
+        {
+          pattern: /se solicita encarecidamente/i,
+          label: 'Se solicita encarecidamente',
+          suggestion: 'Suena rígido o forzado. Usa "Agradeceremos..." o "Solicitamos...".'
+        },
+        {
+          pattern: /(hago|hacemos) presente que/i,
+          label: 'Hago presente que',
+          suggestion: 'Reemplázalo por "Informo que...", "Recordamos que..." o elimínalo.'
+        },
+        {
+          pattern: /(me dirijo|nos dirigimos) a (usted|ustedes|ud\.|uds\.)( con el fin de| para)?/i,
+          label: 'Me dirijo a usted con el fin de',
+          suggestion: 'Rodeo innecesario. Comienza directo con el propósito (ej.: "Solicito...", "Informo...").'
+        },
+        {
+          pattern: /en relaci[oó]n a\b/i,
+          label: 'En relación a',
+          suggestion: 'Además de ser poco preciso, lo correcto es "Respecto de..." o "Sobre...".'
+        },
+        {
+          pattern: /\ba fin de\b|\bcon el fin de\b|\bcon el objeto de\b/i,
+          label: 'A fin de / Con el fin de',
+          suggestion: 'Reemplázalo por el conector simple "para".'
+        },
+        {
+          pattern: /esperando (una |su )?buena acogida/i,
+          label: 'Esperando una buena acogida',
+          suggestion: 'Fórmula anticuada. Usa "Agradecemos su colaboración" o "Quedamos atentos a sus dudas".'
+        }
+      ];
+
+      /* ----------------------------------------------------------------------
+         3. ESTADO DE LA APLICACIÓN (Persistencia por caso en sesión)
+         ---------------------------------------------------------------------- */
+      let activeCaseId = 'caso1';
+      const caseState = {};
+      CASES.forEach((c) => {
+        caseState[c.id] = {
+          de: c.defaultDe || '',
+          para: c.defaultPara || '',
+          asunto: c.defaultAsunto || '',
+          body: '',
+          checks: [false, false, false, false, false]
+        };
+      });
+
+      let lastClearedBackup = null;
+
+      /* ----------------------------------------------------------------------
+         4. REFERENCIAS AL DOM
+         ---------------------------------------------------------------------- */
+      const casesGrid = document.getElementById('casesGrid');
+      const caseBriefCard = document.getElementById('caseBriefCard');
+      const activeCaseIndicator = document.getElementById('activeCaseIndicator');
+
+      const inputDe = document.getElementById('inputDe');
+      const inputPara = document.getElementById('inputPara');
+      const inputAsunto = document.getElementById('inputAsunto');
+      const memoTextarea = document.getElementById('memoTextarea');
+
+      const btnClear = document.getElementById('btnClear');
+      const btnCopy = document.getElementById('btnCopy');
+      const btnPreview = document.getElementById('btnPreview');
+      const btnOpenGuide = document.getElementById('btnOpenGuide');
+      const btnPrintMemo = document.getElementById('btnPrintMemo');
+      const btnDownloadPdf = document.getElementById('btnDownloadPdf');
+
+      const scoreNumber = document.getElementById('scoreNumber');
+      const scoreLabel = document.getElementById('scoreLabel');
+      const scoreFill = document.getElementById('scoreFill');
+      const scoreProgressBar = document.getElementById('scoreProgressBar');
+
+      const metricWords = document.getElementById('metricWords');
+      const metricWordsStatus = document.getElementById('metricWordsStatus');
+      const metricSentences = document.getElementById('metricSentences');
+      const metricSentencesStatus = document.getElementById('metricSentencesStatus');
+      const metricAvgWords = document.getElementById('metricAvgWords');
+      const metricAvgStatus = document.getElementById('metricAvgStatus');
+
+      const longSentenceAlert = document.getElementById('longSentenceAlert');
+      const longSentenceText = document.getElementById('longSentenceText');
+
+      const clicheCountBadge = document.getElementById('clicheCountBadge');
+      const clicheResults = document.getElementById('clicheResults');
+
+      const pillDate = document.getElementById('pillDate');
+      const pillTime = document.getElementById('pillTime');
+      const pillChannel = document.getElementById('pillChannel');
+      const pillAction = document.getElementById('pillAction');
+
+      const selfEvalList = document.getElementById('selfEvalList');
+      const checklistCounter = document.getElementById('checklistCounter');
+
+      const guideModal = document.getElementById('guideModal');
+      const previewModal = document.getElementById('previewModal');
+      const previewModalBody = document.getElementById('previewModalBody');
+      const printArea = document.getElementById('printArea');
+      const toastContainer = document.getElementById('toastContainer');
+
+      /* ----------------------------------------------------------------------
+         5. FUNCIONES AUXILIARES DE SEGURIDAD Y FORMATO
+         ---------------------------------------------------------------------- */
+      function escapeHTML(str) {
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      }
+
+      function getCurrentCase() {
+        return CASES.find((c) => c.id === activeCaseId) || CASES[0];
+      }
+
+      function getFormattedDateCL() {
+        try {
+          return new Date().toLocaleDateString('es-CL', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+          });
+        } catch (e) {
+          return 'Fecha actual';
+        }
+      }
+
+      function showToast(message, undoCallback) {
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+
+        const textSpan = document.createElement('span');
+        textSpan.textContent = message;
+        toast.appendChild(textSpan);
+
+        if (typeof undoCallback === 'function') {
+          const undoBtn = document.createElement('button');
+          undoBtn.type = 'button';
+          undoBtn.className = 'toast-undo';
+          undoBtn.textContent = 'Deshacer';
+          undoBtn.addEventListener('click', () => {
+            undoCallback();
+            toast.remove();
+          });
+          toast.appendChild(undoBtn);
+        }
+
+        toastContainer.appendChild(toast);
+        setTimeout(() => {
+          if (toast.parentNode) toast.remove();
+        }, 4500);
+      }
+
+      /* ----------------------------------------------------------------------
+         6. RENDERIZADO DE SELECTOR DE CASOS Y CONTEXTO
+         ---------------------------------------------------------------------- */
+      function renderCaseTabs() {
+        casesGrid.innerHTML = '';
+        CASES.forEach((c) => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'case-tab' + (c.id === activeCaseId ? ' active' : '');
+          btn.setAttribute('role', 'tab');
+          btn.setAttribute('aria-selected', c.id === activeCaseId ? 'true' : 'false');
+          btn.innerHTML = `
+            <span class="case-badge">${escapeHTML(c.badge)}</span>
+            <span class="case-title">${escapeHTML(c.title)}</span>
+            <span class="case-desc">${escapeHTML(c.shortDesc)}</span>
+          `;
+          btn.addEventListener('click', () => switchCase(c.id));
+          casesGrid.appendChild(btn);
+        });
+      }
+
+      function renderCaseBrief() {
+        const c = getCurrentCase();
+        activeCaseIndicator.textContent = `${c.badge}: ${c.title}`;
+
+        if (c.originalDraft) {
+          caseBriefCard.innerHTML = `
+            <div class="brief-grid">
+              <div class="brief-info">
+                <div>
+                  <div class="brief-item-title">Contexto de la situación</div>
+                  <p class="brief-item-text">${escapeHTML(c.context)}</p>
+                </div>
+                <div>
+                  <div class="brief-item-title">Objetivo comunicacional</div>
+                  <p class="brief-item-text">${escapeHTML(c.objective)}</p>
+                </div>
+              </div>
+              <div class="original-draft-box">
+                <div class="original-draft-header">
+                  <span class="original-draft-label">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <line x1="12" y1="8" x2="12" y2="12"></line>
+                      <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    Borrador Original (a mejorar)
+                  </span>
+                </div>
+                <p class="original-draft-text">«${escapeHTML(c.originalDraft)}»</p>
+              </div>
+            </div>
+          `;
+        } else {
+          caseBriefCard.innerHTML = `
+            <div class="free-case-box">
+              <div class="brief-item-title" style="color: var(--teal-700); margin-bottom: 0.35rem;">Modalidad: Caso Libre de tu Unidad</div>
+              <p style="margin-bottom: 0.45rem;"><strong>Consigna:</strong> ${escapeHTML(c.context)}</p>
+              <p><strong>Desafío:</strong> ${escapeHTML(c.objective)}</p>
+            </div>
+          `;
+        }
+      }
+
+      function loadCaseIntoInputs() {
+        const state = caseState[activeCaseId];
+        inputDe.value = state.de || '';
+        inputPara.value = state.para || '';
+        inputAsunto.value = state.asunto || '';
+        memoTextarea.value = state.body || '';
+
+        const checkboxes = selfEvalList.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach((cb, idx) => {
+          cb.checked = Boolean(state.checks[idx]);
+        });
+
+        analyzeText();
+      }
+
+      function switchCase(newId) {
+        if (newId === activeCaseId) return;
+        activeCaseId = newId;
+        renderCaseTabs();
+        renderCaseBrief();
+        loadCaseIntoInputs();
+      }
+
+      /* ----------------------------------------------------------------------
+         7. MOTOR DE ANÁLISIS EN TIEMPO REAL
+         ---------------------------------------------------------------------- */
+      function analyzeText() {
+        const text = memoTextarea.value.trim();
+        const state = caseState[activeCaseId];
+
+        // 1. Conteo de palabras
+        const words = text ? text.split(/\s+/).filter(Boolean) : [];
+        const wordCount = words.length;
+
+        // 2. División en oraciones (respetando abreviaturas comunes como hrs., ej., sr., sra., ud.)
+        let sentences = [];
+        if (text) {
+          const protectedText = text
+            .replace(/\b(hrs|hr|ej|sr|sra|ud|uds|at|atte|prof|doc|n°|nro|lab)\./gi, '$1<DOT>');
+          sentences = protectedText
+            .split(/[.!?]+(?:\s+|$)/)
+            .map((s) => s.replace(/<DOT>/g, '.').trim())
+            .filter((s) => s.length > 0);
+        }
+
+        const sentenceCount = sentences.length;
+        const sentenceWordCounts = sentences.map((s) => s.split(/\s+/).filter(Boolean).length);
+        const avgWordsPerSentence = sentenceCount > 0 ? Math.round(wordCount / sentenceCount) : 0;
+        const longSentences = sentenceWordCounts.filter((count) => count > 28);
+        const maxSentenceLength = sentenceWordCounts.length > 0 ? Math.max(...sentenceWordCounts) : 0;
+
+        // 3. Detector de vicios burocráticos
+        const detectedCliches = [];
+        if (text) {
+          BUREAUCRATIC_CLICHES.forEach((item) => {
+            const match = text.match(item.pattern);
+            if (match) {
+              detectedCliches.push({
+                matchedText: match[0],
+                label: item.label,
+                suggestion: item.suggestion
+              });
+            }
+          });
+        }
+
+        // 4. Verificador de claridad de acción y datos concretos
+        const hasDate = /\b(lunes|martes|mi[eé]rcoles|jueves|viernes|s[aá]bado|domingo|hoy|ma[nñ]ana|enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre|plazo|fecha|semana|mes|\d{1,2}\s+de\s+[a-z]+|\d{1,2}[\/\-]\d{1,2})\b/i.test(text);
+        const hasTime = /\b(\d{1,2}:\d{2}|\d{1,2}\s?(hrs?\.?|horas?|am|pm|a\.m\.|p\.m\.))\b/i.test(text);
+        const hasChannel = /([a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}|https?:\/\/|www\.|\.cl\b|\b(correo|mail|intranet|portal|formulario|anexo|oficina|bodega|sala|laboratorio|plataforma|tel[eé]fono|contacto|mercado\s+p[uú]blico|secretar[ií]a|fiscal[ií]a|rector[ií]a|gesti[oó]n\s+documental|sistema)\b)/i.test(text);
+        const hasAction = /\b(enviar|env[ií]en|env[ií]e|confirmar|confirmen|confirme|coordinar|coordinen|coordine|informar|informamos|informo|utilizar|utilicen|entregar|entreguen|completar|completen|ingresar|ingresen|solicitar|solicitamos|solicito|solicita|agendar|agenden|registrar|registren|actualizar|actualicen|revisar|revisen|responder|respondan|cerrar|cierren|retirar|retiren|contactar|contacten|regularizar|regularicen|reubicar|asistir|adjuntar|adjunto|adjunta|adjuntan|comunicar|comunicamos|remitir|remito|remita|remitan|elaborar|elabore|elaboren|gestionar|gestione|gestionen|validar|valide|validen|aprobar|apruebe|aprueben|autorizar|autorice|autoricen|tramitar|tramite|tramiten|modificar|modifique|modifiquen|dictar|dicte|dicten|contratar|contrate|contraten|visar|vise|visen|pagar|pague|paguen|publicar|publique|publiquen)\b/i.test(text);
+
+        // 5. Autoevaluación marcada
+        const checkedCount = state.checks.filter(Boolean).length;
+
+        // 6. Cálculo de puntaje dinámico (0 a 100)
+        let score = 0;
+        if (wordCount > 0) {
+          // a) Extensión (máx 25 pts)
+          if (wordCount >= 40 && wordCount <= 110) {
+            score += 25;
+          } else if ((wordCount >= 25 && wordCount < 40) || (wordCount > 110 && wordCount <= 135)) {
+            score += 16;
+          } else if (wordCount >= 12) {
+            score += 8;
+          } else {
+            score += 3;
+          }
+
+          // b) Longitud y fluidez de oraciones (máx 20 pts)
+          if (longSentences.length === 0 && sentenceCount >= 2) {
+            score += 20;
+          } else if (longSentences.length === 0 && sentenceCount === 1 && wordCount <= 28) {
+            score += 14;
+          } else if (longSentences.length === 1) {
+            score += 10;
+          } else {
+            score += 4;
+          }
+
+          // c) Ausencia de vicios burocráticos (máx 20 pts)
+          const clichePenalty = detectedCliches.length * 7;
+          score += Math.max(0, 20 - clichePenalty);
+
+          // d) Claridad de acción y datos concretos (máx 20 pts)
+          if (hasAction) score += 7;
+          if (hasDate) score += 5;
+          if (hasChannel) score += 4;
+          if (hasTime) score += 4;
+
+          // e) Autoevaluación consciente (máx 15 pts -> 3 pts por ítem)
+          score += checkedCount * 3;
+        }
+
+        score = Math.min(100, Math.max(0, Math.round(score)));
+
+        // Actualizar UI
+        updateScoreUI(score, wordCount);
+        updateMetricsUI(wordCount, sentenceCount, avgWordsPerSentence, longSentences.length, maxSentenceLength);
+        updateClichesUI(detectedCliches, wordCount);
+        updateClarityUI(hasDate, hasTime, hasChannel, hasAction);
+        checklistCounter.textContent = `${checkedCount} de 5`;
+      }
+
+      function updateScoreUI(score, wordCount) {
+        scoreNumber.textContent = score;
+        scoreFill.style.width = `${score}%`;
+        scoreProgressBar.setAttribute('aria-valuenow', score);
+
+        scoreLabel.className = 'score-badge';
+        if (wordCount === 0) {
+          scoreLabel.textContent = 'Sin texto';
+          scoreLabel.classList.add('badge-neutral');
+          scoreFill.style.backgroundColor = 'var(--slate-400)';
+        } else if (score < 45) {
+          scoreLabel.textContent = 'Por mejorar';
+          scoreLabel.classList.add('badge-red');
+          scoreFill.style.backgroundColor = 'var(--red-600)';
+        } else if (score < 70) {
+          scoreLabel.textContent = 'En camino';
+          scoreLabel.classList.add('badge-amber');
+          scoreFill.style.backgroundColor = 'var(--amber-600)';
+        } else if (score < 90) {
+          scoreLabel.textContent = 'Muy bien';
+          scoreLabel.classList.add('badge-teal');
+          scoreFill.style.backgroundColor = 'var(--teal-600)';
+        } else {
+          scoreLabel.textContent = 'Excelente';
+          scoreLabel.classList.add('badge-green');
+          scoreFill.style.backgroundColor = 'var(--green-600)';
+        }
+      }
+
+      function updateMetricsUI(wordCount, sentenceCount, avgWords, longCount, maxSentenceLength) {
+        metricWords.textContent = wordCount;
+        metricSentences.textContent = sentenceCount;
+        metricAvgWords.textContent = avgWords;
+
+        // Estado palabras
+        metricWordsStatus.className = 'metric-status';
+        if (wordCount === 0) {
+          metricWordsStatus.textContent = 'Ideal: 40–110';
+          metricWordsStatus.classList.add('badge-neutral');
+        } else if (wordCount < 40) {
+          metricWordsStatus.textContent = 'Muy breve';
+          metricWordsStatus.classList.add('badge-amber');
+        } else if (wordCount <= 110) {
+          metricWordsStatus.textContent = 'Rango ideal';
+          metricWordsStatus.classList.add('badge-green');
+        } else {
+          metricWordsStatus.textContent = 'Muy extenso';
+          metricWordsStatus.classList.add('badge-red');
+        }
+
+        // Estado oraciones
+        metricSentencesStatus.className = 'metric-status';
+        if (sentenceCount === 0) {
+          metricSentencesStatus.textContent = '2 a 5 ideal';
+          metricSentencesStatus.classList.add('badge-neutral');
+        } else if (sentenceCount >= 2 && sentenceCount <= 5) {
+          metricSentencesStatus.textContent = 'Buen ritmo';
+          metricSentencesStatus.classList.add('badge-green');
+        } else {
+          metricSentencesStatus.textContent = sentenceCount === 1 ? 'Usa punto seguido' : 'Muchas oraciones';
+          metricSentencesStatus.classList.add('badge-amber');
+        }
+
+        // Estado promedio
+        metricAvgStatus.className = 'metric-status';
+        if (sentenceCount === 0) {
+          metricAvgStatus.textContent = 'Máx. 28';
+          metricAvgStatus.classList.add('badge-neutral');
+        } else if (longCount === 0 && avgWords <= 24) {
+          metricAvgStatus.textContent = 'Lectura ágil';
+          metricAvgStatus.classList.add('badge-green');
+        } else if (longCount > 0) {
+          metricAvgStatus.textContent = 'Oración larga';
+          metricAvgStatus.classList.add('badge-red');
+        } else {
+          metricAvgStatus.textContent = 'Aceptable';
+          metricAvgStatus.classList.add('badge-amber');
+        }
+
+        // Banner de alerta por oraciones > 28 palabras
+        if (longCount > 0) {
+          longSentenceAlert.style.display = 'flex';
+          longSentenceText.textContent = longCount === 1
+            ? `Tienes 1 oración con ${maxSentenceLength} palabras (supera el límite sugerido de 28). Te recomendamos dividirla usando un punto seguido para mejorar la comprensión.`
+            : `Tienes ${longCount} oraciones que superan las 28 palabras (la más extensa tiene ${maxSentenceLength}). Divídelas con puntos seguidos para que el texto sea más claro.`;
+        } else {
+          longSentenceAlert.style.display = 'none';
+        }
+      }
+
+      function updateClichesUI(detected, wordCount) {
+        clicheCountBadge.className = 'score-badge';
+        if (wordCount === 0) {
+          clicheCountBadge.textContent = '0 detectados';
+          clicheCountBadge.classList.add('badge-neutral');
+          clicheResults.innerHTML = '<p class="empty-feedback">Comienza a escribir para verificar si existen muletillas o frases burocráticas innecesarias.</p>';
+          return;
+        }
+
+        if (detected.length === 0) {
+          clicheCountBadge.textContent = '¡Limpio!';
+          clicheCountBadge.classList.add('badge-green');
+          clicheResults.innerHTML = '<div class="alert-banner alert-green" style="margin-bottom:0;"><strong>Excelente:</strong> No se detectaron vicios burocráticos ni muletillas frecuentes.</div>';
+          return;
+        }
+
+        clicheCountBadge.textContent = `${detected.length} ${detected.length === 1 ? 'detectado' : 'detectados'}`;
+        clicheCountBadge.classList.add('badge-red');
+
+        clicheResults.innerHTML = detected.map((item) => `
+          <div class="cliche-item">
+            <span class="cliche-found">«${escapeHTML(item.matchedText)}»</span>
+            <span class="cliche-suggestion"><strong>Sugerencia:</strong> ${escapeHTML(item.suggestion)}</span>
+          </div>
+        `).join('');
+      }
+
+      function updateClarityUI(hasDate, hasTime, hasChannel, hasAction) {
+        setPillState(pillDate, hasDate, 'Fechas / Días / Plazos');
+        setPillState(pillTime, hasTime, 'Horarios');
+        setPillState(pillChannel, hasChannel, 'Canal / Contacto');
+        setPillState(pillAction, hasAction, 'Verbo de acción claro');
+      }
+
+      function setPillState(el, detected, label) {
+        el.className = 'clarity-pill' + (detected ? ' detected' : '');
+        el.textContent = (detected ? '✓ ' : '○ ') + label;
+      }
+
+      /* ----------------------------------------------------------------------
+         8. ACCIONES: LIMPIAR, COPIAR, VISTA PREVIA E IMPRESIÓN
+         ---------------------------------------------------------------------- */
+      function buildPlainMemoText() {
+        const de = inputDe.value.trim() || '(Sin especificar)';
+        const para = inputPara.value.trim() || '(Sin especificar)';
+        const asunto = inputAsunto.value.trim() || '(Sin especificar)';
+        const cuerpo = memoTextarea.value.trim();
+
+        return [
+          'MEMORÁNDUM INTERNO – CFT',
+          `FECHA: ${getFormattedDateCL()}`,
+          `DE: ${de}`,
+          `PARA: ${para}`,
+          `ASUNTO: ${asunto}`,
+          '--------------------------------------------------',
+          cuerpo || '(Sin contenido redactado)'
+        ].join('\n');
+      }
+
+      function copyMemoToClipboard() {
+        const textToCopy = buildPlainMemoText();
+        const tempTextarea = document.createElement('textarea');
+        tempTextarea.value = textToCopy;
+        tempTextarea.setAttribute('readonly', '');
+        tempTextarea.style.position = 'fixed';
+        tempTextarea.style.top = '-9999px';
+        document.body.appendChild(tempTextarea);
+        tempTextarea.select();
+
+        let copied = false;
+        try {
+          copied = document.execCommand('copy');
+        } catch (err) {
+          copied = false;
+        }
+        document.body.removeChild(tempTextarea);
+
+        if (copied) {
+          showToast('Memorándum copiado al portapapeles.');
+        } else if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(textToCopy)
+            .then(() => showToast('Memorándum copiado al portapapeles.'))
+            .catch(() => showToast('No se pudo copiar automáticamente. Selecciona el texto y usa Ctrl+C.'));
+        } else {
+          showToast('Selecciona el texto manualmente y presiona Ctrl+C para copiar.');
+        }
+      }
+
+      function clearCurrentDraft() {
+        const current = caseState[activeCaseId];
+        if (!current.body.trim()) {
+          showToast('El área de redacción ya está vacía.');
+          return;
+        }
+
+        lastClearedBackup = {
+          caseId: activeCaseId,
+          body: current.body,
+          checks: [...current.checks]
+        };
+
+        current.body = '';
+        current.checks = [false, false, false, false, false];
+        loadCaseIntoInputs();
+
+        showToast('Se limpió el párrafo redactado.', () => {
+          if (lastClearedBackup && lastClearedBackup.caseId === activeCaseId) {
+            caseState[activeCaseId].body = lastClearedBackup.body;
+            caseState[activeCaseId].checks = [...lastClearedBackup.checks];
+            loadCaseIntoInputs();
+            showToast('Se restauró tu texto anterior.');
+          }
+        });
+      }
+
+      function buildFormalMemoHTML() {
+        const de = inputDe.value.trim() || 'Unidad Remitente';
+        const para = inputPara.value.trim() || 'Destinatario';
+        const asunto = inputAsunto.value.trim() || 'Sin asunto definido';
+        const cuerpo = memoTextarea.value.trim() || '(Aún no has redactado el cuerpo del memorándum.)';
+
+        return `
+          <div class="memo-document">
+            <div class="memo-doc-header">
+              <div style="display: flex; align-items: center; gap: 1rem;">
+                <img src="data:image/jpeg;base64,${LOGO_CFT_JPEG_BASE64}" alt="Logo CFT Estatal Región de Valparaíso" style="height: 56px; width: auto; object-fit: contain;">
+                <div>
+                  <div class="memo-doc-title">MEMORÁNDUM</div>
+                </div>
+              </div>
+              <div class="memo-doc-date">${escapeHTML(getFormattedDateCL())}</div>
+            </div>
+            <table class="memo-meta-table">
+              <tr>
+                <td class="memo-meta-key">DE:</td>
+                <td>${escapeHTML(de)}</td>
+              </tr>
+              <tr>
+                <td class="memo-meta-key">PARA:</td>
+                <td>${escapeHTML(para)}</td>
+              </tr>
+              <tr>
+                <td class="memo-meta-key">ASUNTO:</td>
+                <td><strong>${escapeHTML(asunto)}</strong></td>
+              </tr>
+            </table>
+            <div class="memo-doc-body">${escapeHTML(cuerpo)}</div>
+          </div>
+        `;
+      }
+
+      function openPreviewModal() {
+        const c = getCurrentCase();
+        const formalHTML = buildFormalMemoHTML();
+        const userBody = memoTextarea.value.trim() || '(Aún no has redactado tu párrafo mejorado.)';
+
+        let compareSection = '';
+        if (c.originalDraft) {
+          compareSection = `
+            <div>
+              <div class="section-label">Comparación: Antes vs. Después</div>
+              <div class="compare-grid">
+                <div class="compare-card compare-before">
+                  <div class="compare-heading" style="color: var(--amber-700);">Borrador Original (Deficiente)</div>
+                  <p>${escapeHTML(c.originalDraft)}</p>
+                </div>
+                <div class="compare-card compare-after">
+                  <div class="compare-heading" style="color: var(--green-700);">Tu Versión Mejorada</div>
+                  <p>${escapeHTML(userBody)}</p>
+                </div>
+              </div>
+            </div>
+          `;
+        }
+
+        previewModalBody.innerHTML = formalHTML + compareSection;
+        printArea.innerHTML = formalHTML;
+        openModal(previewModal);
+      }
+
+      function printFormalMemo() {
+        printArea.innerHTML = buildFormalMemoHTML();
+        window.print();
+      }
+
+      /* ----------------------------------------------------------------------
+         8b. GENERADOR PDF 100% OFFLINE (Compatible con Microsoft Teams)
+         ---------------------------------------------------------------------- */
+      const LOGO_CFT_WIDTH = 420;
+      const LOGO_CFT_HEIGHT = 241;
+      const LOGO_CFT_JPEG_BASE64 = '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HHG0qEbcQBnJFfQtFAHjHhXxppvw5n8WaR4wi1GwvZPEN/fWipps84vIJ5DLG0LRowc4baVByGUgjpXVfBbRb/w/8LvDdhrdq9lfpbtJNbyY3xGSRpAjY6MA4BHY5rvaKACiiigAooooAKKKKACiiigAooooAKCM0UUAZur6Ja6zb+Vdr8w+5Iv3kPsaboeiw6JZiCE73JzJIRgua1KK8/8As7CfW/rns17S1ubrY19tU9n7O/u9gooor0DIzNd0ddc097R53gVmDFkAOcdjntXC3Xw3voyTaXcEw7BwUP8AWvTaK+ZzXhrLM5n7TFQbla102nb8vwNI1JQ2PM7/AMKaqLXT4YbYSi3g2vtkH3yxJ6/UVXsvC+rR3SGWydVwwJ3L3Uj1r1PFcP8AEe5lt7fTxBLJEWkfJRyueB6V8XnHCuV5TF5s3NunyvluraNJLY9ajmdeNP2KSt/XmfHFr+zL8SrrBOiwWoJ/5b30S4/Imuxuf2XNW1XwNaaJ4k8TaNpFxa6u16kkZa4KxPCEdMfLzlEPpwa9d069mGqWUk00jhZ0zucnuPWlnjEdxMmMFJGH5Gu7F+MGNlh1VoYdJ81tXe2np6n1085x+dQdCrKMYqz0Wv4tnzh40+H3wq+A0ekS+IdM1r4jahqKSPB5k62dlmMgEMq/N1IODu4NaXgP9r7xHqfxJ8N2mtw6bo3g6SVbKSytYsiJWGyN2kbLfKdvTAxnitr9pvQf7X+F8GoRRl7jRNVjk+UZPlTr5bcf7wjrwXwV+z18RvHpRtJ8OXNjZvyL3Uc2sQHqN3zN/wABBr9n4XzLDcSZDSzHGNc8k07vRNNp2XQ8SrQormVaV2rq7Z+popaw/B1hq2l+FtHsvE11DfavbWkcV3cwAhJZFUAsM884zW5XitWbR8m1Z2CiiikIKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACsDxL4ZXxELYPctbiAseEDZzj/Ct+iuPGYOhj6EsPiI80Jbr8eg03F3Rw0Hw2to3V3v52KkHhFHQ1pnwRpstxJPcNNK0jlyu/AGTntXTUV4lLhbJaUeWOHja99bvX5tm8MTWp35ZNXM6y0PT9Pz9ktY4yepxkn8TWhilor6GjQpYeCp0oqMV0SsjGUpTd5O7CiiitiQooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA//Z';
+
+      let lastPdfBlobUrl = null;
+
+      function base64ToUint8Array(b64) {
+        const bin = atob(b64);
+        const arr = new Uint8Array(bin.length);
+        for (let i = 0; i < bin.length; i++) {
+          arr[i] = bin.charCodeAt(i);
+        }
+        return arr;
+      }
+
+      function toWinAnsiPdfLiteral(str) {
+        const winAnsiExtra = {
+          0x20AC: 0x80,
+          0x2026: 0x85,
+          0x2018: 0x91,
+          0x2019: 0x92,
+          0x201C: 0x93,
+          0x201D: 0x94,
+          0x2022: 0x95,
+          0x2013: 0x96,
+          0x2014: 0x97
+        };
+        let out = '';
+        for (let i = 0; i < str.length; i++) {
+          const code = str.charCodeAt(i);
+          if (code === 0x5C || code === 0x28 || code === 0x29) {
+            out += '\\' + str[i];
+          } else if (code >= 0x20 && code <= 0x7E) {
+            out += str[i];
+          } else if (code >= 0xA0 && code <= 0xFF) {
+            out += '\\' + code.toString(8).padStart(3, '0');
+          } else if (winAnsiExtra[code]) {
+            out += '\\' + winAnsiExtra[code].toString(8).padStart(3, '0');
+          } else {
+            out += ' ';
+          }
+        }
+        return out;
+      }
+
+      function wrapPdfText(text, maxChars) {
+        const result = [];
+        const rawParagraphs = String(text || '').replace(/\r\n/g, '\n').split('\n');
+        rawParagraphs.forEach((para) => {
+          const trimmed = para.trim();
+          if (!trimmed) {
+            result.push('');
+            return;
+          }
+          const words = trimmed.split(/\s+/);
+          let current = '';
+          words.forEach((word) => {
+            if (!current) {
+              if (word.length <= maxChars) {
+                current = word;
+              } else {
+                for (let k = 0; k < word.length; k += maxChars) {
+                  const chunk = word.slice(k, k + maxChars);
+                  if (k + maxChars < word.length) result.push(chunk);
+                  else current = chunk;
+                }
+              }
+            } else if ((current.length + 1 + word.length) <= maxChars) {
+              current += ' ' + word;
+            } else {
+              result.push(current);
+              if (word.length <= maxChars) {
+                current = word;
+              } else {
+                current = '';
+                for (let k = 0; k < word.length; k += maxChars) {
+                  const chunk = word.slice(k, k + maxChars);
+                  if (k + maxChars < word.length) result.push(chunk);
+                  else current = chunk;
+                }
+              }
+            }
+          });
+          if (current) result.push(current);
+        });
+        return result.length ? result : [''];
+      }
+
+      function generateMemoPdfBytes(meta) {
+        const pageW = 612;
+        const pageH = 792;
+        const marginX = 56;
+        const rightX = pageW - marginX;
+        const bottomY = 64;
+        const logoBytes = base64ToUint8Array(LOGO_CFT_JPEG_BASE64);
+
+        const pages = [];
+        let ops = [];
+
+        function pushText(font, size, x, y, text, rgb) {
+          ops.push(`${rgb} rg`);
+          ops.push(`BT /${font} ${size} Tf ${x.toFixed(2)} ${y.toFixed(2)} Td (${toWinAnsiPdfLiteral(text)}) Tj ET`);
+        }
+
+        function pushLine(x1, y1, x2, y2, width, rgb) {
+          ops.push(`${rgb} RG ${width.toFixed(2)} w ${x1.toFixed(2)} ${y1.toFixed(2)} m ${x2.toFixed(2)} ${y2.toFixed(2)} l S`);
+        }
+
+        function pushRect(x, y, w, h, rgb) {
+          ops.push(`${rgb} rg ${x.toFixed(2)} ${y.toFixed(2)} ${w.toFixed(2)} ${h.toFixed(2)} re f`);
+        }
+
+        // Encabezado formal con Logo CFT Estatal Región de Valparaíso
+        pushRect(0, pageH - 14, pageW, 14, '0.047 0.137 0.251');
+
+        const logoDisplayW = 128;
+        const logoDisplayH = logoDisplayW * (LOGO_CFT_HEIGHT / LOGO_CFT_WIDTH);
+        const logoY = pageH - 102;
+        ops.push(`q ${logoDisplayW.toFixed(2)} 0 0 ${logoDisplayH.toFixed(2)} ${marginX.toFixed(2)} ${logoY.toFixed(2)} cm /Im1 Do Q`);
+
+        pushText('F2', 20, rightX - 148, pageH - 64, 'MEMORÁNDUM', '0.047 0.137 0.251');
+
+        const dateStr = meta.fecha;
+        const estDateWidth = dateStr.length * 5.1;
+        pushText('F1', 10, Math.max(marginX + 160, rightX - estDateWidth), pageH - 84, dateStr, '0.278 0.333 0.412');
+
+        let y = pageH - 114;
+        pushLine(marginX, y, rightX, y, 2, '0.047 0.137 0.251');
+        y -= 24;
+
+        // Bloque de metadatos (DE / PARA / ASUNTO)
+        const metaRows = [
+          { label: 'DE:', value: meta.de, bold: false },
+          { label: 'PARA:', value: meta.para, bold: false },
+          { label: 'ASUNTO:', value: meta.asunto, bold: true }
+        ];
+
+        metaRows.forEach((row) => {
+          pushText('F2', 10, marginX, y, row.label, '0.047 0.137 0.251');
+          const wrapped = wrapPdfText(row.value, 66);
+          wrapped.forEach((line, idx) => {
+            if (idx > 0) y -= 15;
+            pushText(row.bold ? 'F2' : 'F1', 10.5, marginX + 68, y, line, '0.059 0.090 0.165');
+          });
+          y -= 20;
+        });
+
+        pushLine(marginX, y + 6, rightX, y + 6, 0.75, '0.796 0.835 0.882');
+        y -= 18;
+
+        // Cuerpo del memorándum con paginación automática
+        const bodyLines = wrapPdfText(meta.cuerpo, 82);
+        const lineHeight = 16.5;
+
+        bodyLines.forEach((line) => {
+          if (y < bottomY) {
+            pages.push(ops);
+            ops = [];
+            pushRect(0, pageH - 10, pageW, 10, '0.047 0.137 0.251');
+            y = pageH - 56;
+          }
+          if (line !== '') {
+            pushText('F1', 11, marginX, y, line, '0.059 0.090 0.165');
+          }
+          y -= lineHeight;
+        });
+
+        pages.push(ops);
+
+        // Pie de página en cada hoja
+        const totalPages = pages.length;
+        pages.forEach((pageOps, idx) => {
+          const footerY = 34;
+          pageOps.push(`0.886 0.910 0.941 RG 0.5 w ${marginX} ${footerY + 12} m ${rightX} ${footerY + 12} l S`);
+          pageOps.push('0.392 0.455 0.545 rg');
+          pageOps.push(`BT /F1 8.5 Tf ${marginX} ${footerY} Td (${toWinAnsiPdfLiteral('CFT Estatal Región de Valparaíso · Taller de Redacción de Memorándums')}) Tj ET`);
+          const pageLabel = `Página ${idx + 1} de ${totalPages}`;
+          pageOps.push(`BT /F1 8.5 Tf ${rightX - 62} ${footerY} Td (${toWinAnsiPdfLiteral(pageLabel)}) Tj ET`);
+        });
+
+        // Ensamblaje binario del PDF 1.4 con imagen JPEG embebida y tabla xref exacta
+        const chunks = [];
+        let totalLen = 0;
+
+        function pushAscii(str) {
+          const arr = new Uint8Array(str.length);
+          for (let i = 0; i < str.length; i++) {
+            arr[i] = str.charCodeAt(i) & 0xFF;
+          }
+          chunks.push(arr);
+          totalLen += arr.length;
+        }
+
+        function pushBytes(arr) {
+          chunks.push(arr);
+          totalLen += arr.length;
+        }
+
+        pushAscii('%PDF-1.4\n');
+        pushBytes(new Uint8Array([0x25, 0xE2, 0xE3, 0xCF, 0xD3, 0x0A]));
+
+        const offsets = {};
+        const kidsRefs = [];
+
+        function addAsciiObj(id, body) {
+          offsets[id] = totalLen;
+          pushAscii(`${id} 0 obj\n${body}\nendobj\n`);
+        }
+
+        for (let i = 0; i < pages.length; i++) {
+          kidsRefs.push(`${6 + i * 2} 0 R`);
+        }
+
+        addAsciiObj(1, '<< /Type /Catalog /Pages 2 0 R >>');
+        addAsciiObj(2, `<< /Type /Pages /Kids [${kidsRefs.join(' ')}] /Count ${pages.length} >>`);
+        addAsciiObj(3, '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>');
+        addAsciiObj(4, '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>');
+
+        // Objeto 5: Imagen XObject JPEG del logo institucional
+        offsets[5] = totalLen;
+        pushAscii(`5 0 obj\n<< /Type /XObject /Subtype /Image /Width ${LOGO_CFT_WIDTH} /Height ${LOGO_CFT_HEIGHT} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${logoBytes.length} >>\nstream\n`);
+        pushBytes(logoBytes);
+        pushAscii('\nendstream\nendobj\n');
+
+        for (let i = 0; i < pages.length; i++) {
+          const pageId = 6 + i * 2;
+          const contentId = 7 + i * 2;
+          const stream = pages[i].join('\n');
+          addAsciiObj(pageId, `<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${pageW} ${pageH}] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> /XObject << /Im1 5 0 R >> >> /Contents ${contentId} 0 R >>`);
+          addAsciiObj(contentId, `<< /Length ${stream.length} >>\nstream\n${stream}\nendstream`);
+        }
+
+        const totalObjs = 5 + pages.length * 2;
+        const xrefOffset = totalLen;
+        pushAscii(`xref\n0 ${totalObjs + 1}\n0000000000 65535 f \n`);
+        for (let id = 1; id <= totalObjs; id++) {
+          pushAscii(`${String(offsets[id]).padStart(10, '0')} 00000 n \n`);
+        }
+        pushAscii(`trailer\n<< /Size ${totalObjs + 1} /Root 1 0 R >>\nstartxref\n${xrefOffset}\n%%EOF\n`);
+
+        const finalBytes = new Uint8Array(totalLen);
+        let pos = 0;
+        for (let i = 0; i < chunks.length; i++) {
+          finalBytes.set(chunks[i], pos);
+          pos += chunks[i].length;
+        }
+        return finalBytes;
+      }
+
+      function downloadMemoPDF() {
+        const meta = {
+          fecha: getFormattedDateCL(),
+          de: inputDe.value.trim() || 'Unidad Remitente',
+          para: inputPara.value.trim() || 'Destinatario',
+          asunto: inputAsunto.value.trim() || 'Sin asunto definido',
+          cuerpo: memoTextarea.value.trim() || '(Aún no has redactado el cuerpo del memorándum.)'
+        };
+
+        try {
+          const pdfBytes = generateMemoPdfBytes(meta);
+          const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+          const safeCase = (activeCaseId || 'memorandum').replace(/[^a-z0-9_-]/gi, '');
+          const isoDate = new Date().toISOString().slice(0, 10);
+          const filename = `Memorandum_CFT_${safeCase}_${isoDate}.pdf`;
+
+          if (window.navigator && typeof window.navigator.msSaveOrOpenBlob === 'function') {
+            window.navigator.msSaveOrOpenBlob(blob, filename);
+            showToast(`PDF guardado: ${filename}`);
+            return;
+          }
+
+          if (lastPdfBlobUrl) {
+            URL.revokeObjectURL(lastPdfBlobUrl);
+          }
+          lastPdfBlobUrl = URL.createObjectURL(blob);
+
+          const link = document.createElement('a');
+          link.href = lastPdfBlobUrl;
+          link.download = filename;
+          link.rel = 'noopener';
+          link.style.display = 'none';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+
+          showToast(`PDF descargado: ${filename}`);
+        } catch (err) {
+          showToast('No se pudo generar el PDF automáticamente. Prueba con el botón Imprimir.');
+        }
+      }
+
+      /* ----------------------------------------------------------------------
+         9. CONTROL DE MODALES Y EVENTOS
+         ---------------------------------------------------------------------- */
+      function openModal(modalEl) {
+        modalEl.classList.add('open');
+        const closeBtn = modalEl.querySelector('.modal-close');
+        if (closeBtn) closeBtn.focus();
+      }
+
+      function closeModal(modalEl) {
+        modalEl.classList.remove('open');
+      }
+
+      // Eventos de inputs (actualizan estado y análisis en vivo)
+      inputDe.addEventListener('input', () => { caseState[activeCaseId].de = inputDe.value; });
+      inputPara.addEventListener('input', () => { caseState[activeCaseId].para = inputPara.value; });
+      inputAsunto.addEventListener('input', () => { caseState[activeCaseId].asunto = inputAsunto.value; });
+      memoTextarea.addEventListener('input', () => {
+        caseState[activeCaseId].body = memoTextarea.value;
+        analyzeText();
+      });
+
+      // Eventos de autoevaluación
+      selfEvalList.addEventListener('change', (e) => {
+        if (e.target && e.target.matches('input[type="checkbox"]')) {
+          const idx = Number(e.target.getAttribute('data-check'));
+          caseState[activeCaseId].checks[idx] = e.target.checked;
+          analyzeText();
+        }
+      });
+
+      // Botones principales
+      btnClear.addEventListener('click', clearCurrentDraft);
+      btnCopy.addEventListener('click', copyMemoToClipboard);
+      btnPreview.addEventListener('click', openPreviewModal);
+      btnOpenGuide.addEventListener('click', () => openModal(guideModal));
+      btnPrintMemo.addEventListener('click', printFormalMemo);
+      btnDownloadPdf.addEventListener('click', downloadMemoPDF);
+
+      // Cierre de modales por botón, clic en fondo o tecla Escape
+      document.querySelectorAll('[data-close-modal]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const targetId = btn.getAttribute('data-close-modal');
+          const modal = document.getElementById(targetId);
+          if (modal) closeModal(modal);
+        });
+      });
+
+      [guideModal, previewModal].forEach((modal) => {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) closeModal(modal);
+        });
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeModal(guideModal);
+          closeModal(previewModal);
+        }
+      });
+
+      /* ----------------------------------------------------------------------
+         10. INICIALIZACIÓN
+         ---------------------------------------------------------------------- */
+      renderCaseTabs();
+      renderCaseBrief();
+      loadCaseIntoInputs();
+    })();
+  </script>
+</body>
+
+</html>
